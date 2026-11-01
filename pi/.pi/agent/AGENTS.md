@@ -34,6 +34,32 @@
 - Treat user approval as a hard gate: no commits, file writes, or mass refactors before explicit confirmation.
 - After approval, keep changes local to the agreed scope; if follow-up work appears, propose a new plan instead of silently expanding the diff.
 
+## Where rules live
+
+- Global rules for every agent: `~/.agents/instructions/common.md`. Tool-only rules: `claude.md`, `pi.md`, `codex.md` beside it. Repo rules: the project's `AGENTS.md`. Put a new rule in the lowest layer that still covers everyone who needs it, not in the file you happen to be reading.
+- Skills are shared from `~/.agents/skills`. Multi-step procedures belong in a skill, not in an instruction file.
+
+## Orchestration (multi-agent work)
+
+- Roles: the main thread orchestrates and commits; implementers and reviewers run as separate sessions in tmux panes, each writing a report to a scratchpad file the orchestrator waits on. The `orchestrate` skill has the launch recipes and the brief template.
+- The brief carries the approval. The orchestrator completes the planning gate with the user once, then the brief states: "The plan is already approved by the owner. Do not present a plan or wait; start implementing. Report deviations in your final report. Stop only for destructive actions or a change to a documented decision." A session started from such a brief does not re-run the planning gate.
+- One fresh reviewer session per review round; never reuse one. Review every slice before commit; fix findings, then give the fix its own focused review. After two rounds on the same change, commit and carry residual nits as follow-up commits.
+- Never use git worktrees for implementers; work in the main checkout.
+- Report status unprompted when a background run stalls or finishes; do not wait to be asked.
+
+## Validation tiers
+
+- Iterate on the narrowest check that can fail for the change: the touched test file or name pattern, the single crate or package, and the scoped end-to-end journey that covers the behaviour.
+- Run the full suite, workspace-wide lint and the full end-to-end matrix once per slice, after the slice's review findings are fixed and before its commit, and again after any change to a shipped threshold or fixture. Do not relaunch a full matrix to confirm a single fix.
+- State in the final report which tier ran and which did not.
+
+## Design conversations
+
+- One question at a time; never a wall of text. Lead with the decision needed.
+- Reason from first principles about essential versus repeated work before proposing mechanisms; measure before tuning.
+- "Show me visually" means a rendered page or diagram; extend the same one rather than creating new ones.
+- An implementation ticket's deliverable is the implementation with docs updated; a findings doc alone is not completion.
+
 ## Modularity
 
 - Prefer modular files with one clear responsibility.
