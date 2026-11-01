@@ -2,10 +2,7 @@
 
 Claude Code, pi and codex read the same rules, the same model roster and the same skills on this machine, from one directory, with nothing maintained twice.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/flow-dark.svg">
-  <img src="docs/flow-light.svg" alt="One source directory feeding Claude Code by import, pi and codex by generated copy, and all three by shared skills" width="960">
-</picture>
+<img src="docs/flow.svg" alt="One source directory feeding Claude Code by import, pi and codex by generated copy, and all three by shared skills" width="960">
 
 Claude Code is the only harness with an import syntax, so it reads the source live. pi and codex have none, so a six-line script renders their files, with a GENERATED header, and the copies are committed so every rebuild is a reviewable diff. Those two copies are the only duplicated bytes in the setup.
 
