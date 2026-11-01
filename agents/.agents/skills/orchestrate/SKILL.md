@@ -10,6 +10,7 @@ The orchestrator plans with the user, delegates each slice with a pre-approved b
 - The orchestrator runs in a tmux window. Implementer and reviewer sessions open as panes beside it with `tmux split-window -h -t <session>:<window>.<pane> -c <repo> -d "<command>"`.
 - Every delegated session writes its final report to `<scratchpad>/report-<slice>.md`. The orchestrator waits on that file, not on the pane, and reads the pane only to diagnose a stall.
 - One pane per role at a time. Kill a finished reviewer pane before opening the next; never send a new review into an old session.
+- Check the pane every 10 minutes while waiting on a report file. Prompt covered by the brief: answer it there. Anything else, or no progress: tell the user, leave the session running.
 
 ## Implementer
 
