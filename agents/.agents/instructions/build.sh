@@ -6,9 +6,11 @@ here="$(cd "$(dirname "$0")" && pwd)"
 repo="$(cd "$here/../../.." && pwd)"
 render() { # render <tool-file> <target>
   {
-    echo "<!-- GENERATED from ~/.agents/instructions (common.md + $1). Edit there and run build.sh. -->"
+    echo "<!-- GENERATED from ~/.agents/instructions (common.md + models.md + $1). Edit there and run build.sh. -->"
     echo
     cat "$here/common.md"
+    echo
+    cat "$here/models.md"
     echo
     cat "$here/$1"
   } > "$2"
