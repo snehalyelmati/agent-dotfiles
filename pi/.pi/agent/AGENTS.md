@@ -2,6 +2,11 @@
 
 # Global Instructions
 
+## Replies
+
+- Never give a wall of text, in any reply. Lead with the answer or the decision needed, and keep the rest short.
+- Ask one question at a time.
+
 ## Design decision gate
 
 - Treat user-approved plans and project docs (`AGENTS.md`, roadmap, design decisions, specs, impl docs) as the current baseline.
@@ -56,7 +61,6 @@
 
 ## Design conversations
 
-- One question at a time; never a wall of text. Lead with the decision needed.
 - Reason from first principles about essential versus repeated work before proposing mechanisms; measure before tuning.
 - "Show me visually" means a rendered page or diagram; extend the same one rather than creating new ones.
 - An implementation ticket's deliverable is the implementation with docs updated; a findings doc alone is not completion.
