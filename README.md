@@ -95,6 +95,12 @@ Claude Code is the only harness with an import syntax, so pi and codex get rende
 
 A new rule goes in the lowest layer that covers everyone who needs it: `common.md` for all harnesses, a tool file only when it names that tool's own feature, the project's `AGENTS.md` for repo facts. Procedures go in a skill, not an instruction file.
 
+## What to review
+
+The instruction text lives in five files, all under `agents/.agents/instructions/`: `common.md`, `models.md`, `claude.md`, `pi.md`, `codex.md`. Everything else is derived from them or is mechanics. The model roster names families, not versions; each harness runs the latest version of the family it offers, so version bumps need no edit.
+
+Two things carry procedure or enforcement rather than rules: the `orchestrate` skill (tmux launch recipes, brief template, per-slice loop) and `claude/.claude/hooks/no-worktree.sh`.
+
 ## Per project
 
 A single `AGENTS.md` is read by all three harnesses. Start from `project-template/`. Add a `CLAUDE.md` shim (`@AGENTS.md` plus a Claude-only section) only when the repo has a Claude-specific rule; a `CLAUDE.md` or `CLAUDE.local.md` anywhere above the working directory switches Claude Code to CLAUDE.md-only mode.
