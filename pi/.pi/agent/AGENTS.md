@@ -41,11 +41,12 @@
 
 ## Orchestration (multi-agent work)
 
-- Roles: the main thread orchestrates and commits; implementers and reviewers run as separate sessions in tmux panes, each writing a report to a scratchpad file the orchestrator waits on. The `orchestrate` skill has the launch recipes and the brief template.
+- Roles: the main thread orchestrates and commits; implementers and reviewers run as separate sessions in tmux panes, each writing a report to a scratchpad file the orchestrator waits on. Load the `orchestrate` skill before starting multi-slice work.
 - The brief carries the approval. The orchestrator completes the planning gate with the user once, then the brief states: "The plan is already approved by the owner. Do not present a plan or wait; start implementing. Report deviations in your final report. Stop only for destructive actions or a change to a documented decision." A session started from such a brief does not re-run the planning gate.
 - One fresh reviewer session per review round; never reuse one. Review every slice before commit; fix findings, then give the fix its own focused review. After two rounds on the same change, commit and carry residual nits as follow-up commits.
 - Never use git worktrees for implementers; work in the main checkout.
 - Report status unprompted when a background run stalls or finishes; do not wait to be asked.
+- Never wait silently. Check a delegated session every 10 minutes; answer a prompt the brief covers, relay anything else to the user, and report a stall as soon as you see one.
 
 ## Validation tiers
 
@@ -59,6 +60,7 @@
 - Reason from first principles about essential versus repeated work before proposing mechanisms; measure before tuning.
 - "Show me visually" means a rendered page or diagram; extend the same one rather than creating new ones.
 - An implementation ticket's deliverable is the implementation with docs updated; a findings doc alone is not completion.
+- When optimising a subsystem, keep a standalone levers doc (knob, location, value, rationale, trade-off, measured) and record every measurement run in the project's benchmark ledger.
 
 ## Modularity
 
@@ -86,7 +88,7 @@
 - Keep mechanical refactors separate from behavior changes when practical.
 - Always use a detailed commit message.
 - Keep the subject concise.
-- Include body bullets covering key changes, validation performed, and important caveats or follow-ups.
+- Include body bullets covering key changes, validation performed, the review outcome when a review ran, and important caveats or follow-ups.
 - When a commit resolves or relates to a GitHub issue, include `Fixes #N` / `Closes #N` or `Refs #N` in the commit body for GitHub auto-link/close behavior.
 
 ## Model roster
