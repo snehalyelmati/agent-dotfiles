@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" role="img" aria-label="One source directory feeding Claude Code, pi and codex">
+<rect width="960" height="460" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5d6b67"/></marker>
+<marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1d7a6c"/></marker>
+<marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a85d1a"/></marker></defs>
+<g font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#17201e">
+<!-- source: instructions -->
+<rect x="24" y="28" width="250" height="180" rx="8" fill="#d9efe9" stroke="#1d7a6c" stroke-width="1.2"/>
+<text x="40" y="54" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600">~/.agents/instructions/</text>
+<text x="56" y="82" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">common.md   models.md</text>
+<text x="56" y="106" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">claude.md   pi.md   codex.md</text>
+<text x="56" y="130" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">build.sh</text>
+<text x="56" y="154" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">project-template/</text>
+<text x="40" y="190" font-size="12" fill="#5d6b67">authored, the only place rules are edited</text>
+<!-- source: skills -->
+<rect x="24" y="250" width="250" height="110" rx="8" fill="#d9efe9" stroke="#1d7a6c" stroke-width="1.2"/>
+<text x="40" y="276" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" font-weight="600">~/.agents/skills/</text>
+<text x="56" y="304" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">one copy of every skill</text>
+<text x="40" y="340" font-size="12" fill="#5d6b67">npx skills installs land here</text>
+<!-- build -->
+<rect x="420" y="160" width="140" height="54" rx="8" fill="#f6e6d6" stroke="#a85d1a" stroke-width="1.2"/>
+<text x="490" y="183" text-anchor="middle" font-weight="600">build.sh</text>
+<text x="490" y="201" text-anchor="middle" font-size="11.5" fill="#5d6b67">common + models + tool</text>
+<!-- harnesses -->
+<rect x="690" y="28" width="246" height="96" rx="8" fill="none" stroke="#d4dbd8" stroke-width="1.2"/>
+<circle cx="712" cy="52" r="5" fill="#b0603a"/><text x="726" y="57" font-weight="600">Claude Code</text>
+<text x="712" y="82" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12">~/.claude/CLAUDE.md</text>
+<text x="712" y="104" font-size="11.5" fill="#5d6b67">three live @imports</text>
+<rect x="690" y="146" width="246" height="96" rx="8" fill="none" stroke="#d4dbd8" stroke-width="1.2"/>
+<circle cx="712" cy="170" r="5" fill="#4b61a8"/><text x="726" y="175" font-weight="600">pi</text>
+<text x="712" y="200" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12">~/.pi/agent/AGENTS.md</text>
+<text x="712" y="222" font-size="11.5" fill="#5d6b67">generated copy, committed</text>
+<rect x="690" y="264" width="246" height="96" rx="8" fill="none" stroke="#d4dbd8" stroke-width="1.2"/>
+<circle cx="712" cy="288" r="5" fill="#2d8a5a"/><text x="726" y="293" font-weight="600">codex</text>
+<text x="712" y="318" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12">~/.codex/AGENTS.md</text>
+<text x="712" y="340" font-size="11.5" fill="#5d6b67">generated copy, committed</text>
+<!-- edges: instructions -->
+<path d="M274 80 C 420 80, 560 76, 686 76" fill="none" stroke="#1d7a6c" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#aa)"/>
+<text x="480" y="66" text-anchor="middle" font-size="11.5" fill="#5d6b67">@common.md  @models.md  @claude.md</text>
+<path d="M274 150 C 340 150, 360 187, 416 187" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<path d="M560 180 C 620 180, 630 194, 686 194" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<text x="623" y="172" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ pi.md</text>
+<path d="M560 198 C 640 198, 620 312, 686 312" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<text x="650" y="262" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ codex.md</text>
+<!-- edges: skills -->
+<path d="M274 300 C 420 300, 560 112, 686 112" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M274 310 C 440 310, 560 232, 686 232" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M274 320 C 440 320, 560 350, 686 350" fill="none" stroke="#5d6b67" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="470" y="262" text-anchor="middle" font-size="11.5" fill="#5d6b67">~/.claude/skills symlink</text>
+<text x="470" y="292" text-anchor="middle" font-size="11.5" fill="#5d6b67">per-skill symlinks</text>
+<text x="470" y="348" text-anchor="middle" font-size="11.5" fill="#5d6b67">read natively</text>
+<!-- legend -->
+<g transform="translate(24 410)" font-size="11.5" fill="#5d6b67">
+<line x1="0" y1="0" x2="30" y2="0" stroke="#1d7a6c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="38" y="4">live import</text>
+<line x1="130" y1="0" x2="160" y2="0" stroke="#a85d1a" stroke-width="1.6"/><text x="168" y="4">generated copy</text>
+<line x1="280" y1="0" x2="310" y2="0" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round"/><text x="318" y="4">symlink</text>
+<line x1="400" y1="0" x2="430" y2="0" stroke="#5d6b67" stroke-width="1.4"/><text x="438" y="4">native read</text>
+<text x="936" y="4" text-anchor="end">per project: one AGENTS.md, read by all three</text>
+</g>
+</g></svg>
