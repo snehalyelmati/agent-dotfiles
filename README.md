@@ -33,6 +33,7 @@ claude/.claude/
   CLAUDE.md            three @imports: common, models, claude
   agents/              user-level agent definitions
   hooks/               no-worktree.sh, wired from ~/.claude/settings.json
+  statusline.sh        status line, wired from ~/.claude/settings.json
 pi/.pi/agent/AGENTS.md    GENERATED: common + models + pi
 codex/.codex/AGENTS.md    GENERATED: common + models + codex
 install.sh               render, stow, link skills
@@ -62,7 +63,7 @@ One `AGENTS.md`, read by all three harnesses. Start from `agents/.agents/instruc
 
 ## Not in this repo
 
-- `~/.claude/settings.json`: permissions, plugins, hook wiring, model defaults. Machine state.
+- `~/.claude/settings.json`: permissions, plugins, hook and status line wiring, model defaults. Machine state.
 - pi and codex settings and permission rules.
 - `agents/.agents/skills/synced/`: Claude Code's cloud-synced skills land there through the symlink; git-ignored.
 
@@ -74,7 +75,7 @@ git clone git@github.com:snehalyelmati/agent-dotfiles.git ~/Documents/agent-dotf
 cd ~/Documents/agent-dotfiles && ./install.sh
 ```
 
-Then add a `PreToolUse` hook entry for `~/.claude/hooks/no-worktree.sh` to `~/.claude/settings.json`.
+Then add two entries to `~/.claude/settings.json`: a `PreToolUse` hook for `~/.claude/hooks/no-worktree.sh`, and a `statusLine` of type `command` running `~/.claude/statusline.sh`. The status line needs `jq`.
 
 ## License
 
