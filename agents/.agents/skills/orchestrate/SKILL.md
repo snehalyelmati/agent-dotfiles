@@ -17,7 +17,7 @@ The orchestrator plans with the user, delegates each slice with a pre-approved b
 claude --model opus --permission-mode auto "$(cat <scratchpad>/task-<slice>.md)"
 ```
 
-The task file is the brief (template below). Opus by name; the Agent tool's model override is not honoured from a Fable session.
+The task file is the brief (template below). The model comes from the Model roster's implementation row; the Agent tool's model override is not honoured from a Fable session, hence a separate session.
 
 ## Reviewer
 
@@ -25,7 +25,7 @@ The task file is the brief (template below). Opus by name; the Agent tool's mode
 pi --provider openai-codex --model gpt-6-astra:high --name review-<slice> '<brief>'
 ```
 
-Codex subscription provider, not the OpenAI API. The brief names the fixed point (commit or `HEAD` plus uncommitted tree), the files in scope, asks for the `code-review` skill, and names the report file. A follow-up review of a fix is a new session with a brief scoped to the findings it checks.
+Model from the roster's code-review row, on a different vendor from the implementer; the `openai-codex` provider is the Codex subscription, not the OpenAI API. The brief names the fixed point (commit or `HEAD` plus uncommitted tree), the files in scope, asks for the `code-review` skill, and names the report file. A follow-up review of a fix is a new session with a brief scoped to the findings it checks.
 
 ## Brief template
 
