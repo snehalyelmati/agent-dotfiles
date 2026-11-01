@@ -18,9 +18,9 @@
 <text x="56" y="304" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5">one copy of every skill</text>
 <text x="40" y="340" font-size="12" fill="#5d6b67">npx skills installs land here</text>
 <!-- build -->
-<rect x="420" y="160" width="140" height="54" rx="8" fill="#f6e6d6" stroke="#a85d1a" stroke-width="1.2"/>
-<text x="490" y="183" text-anchor="middle" font-weight="600">build.sh</text>
-<text x="490" y="201" text-anchor="middle" font-size="11.5" fill="#5d6b67">common + models + tool</text>
+<rect x="400" y="112" width="140" height="54" rx="8" fill="#f6e6d6" stroke="#a85d1a" stroke-width="1.2"/>
+<text x="470" y="135" text-anchor="middle" font-weight="600">build.sh</text>
+<text x="470" y="153" text-anchor="middle" font-size="11.5" fill="#5d6b67">common + models + tool</text>
 <!-- harnesses -->
 <rect x="690" y="28" width="246" height="96" rx="8" fill="none" stroke="#d4dbd8" stroke-width="1.2"/>
 <circle cx="712" cy="52" r="5" fill="#b0603a"/><text x="726" y="57" font-weight="600">Claude Code</text>
@@ -37,18 +37,18 @@
 <!-- edges: instructions -->
 <path d="M274 80 C 420 80, 560 76, 686 76" fill="none" stroke="#1d7a6c" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#aa)"/>
 <text x="480" y="66" text-anchor="middle" font-size="11.5" fill="#5d6b67">@common.md  @models.md  @claude.md</text>
-<path d="M274 150 C 340 150, 360 187, 416 187" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
-<path d="M560 180 C 620 180, 630 194, 686 194" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
-<text x="623" y="172" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ pi.md</text>
-<path d="M560 198 C 640 198, 620 312, 686 312" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
-<text x="650" y="262" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ codex.md</text>
+<path d="M274 140 C 330 140, 340 139, 396 139" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<path d="M540 132 C 600 132, 620 194, 686 194" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<text x="575" y="118" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ pi.md</text>
+<path d="M540 150 C 620 150, 600 312, 686 312" fill="none" stroke="#a85d1a" stroke-width="1.6" marker-end="url(#aw)"/>
+<text x="585" y="290" text-anchor="middle" font-size="11.5" fill="#5d6b67">+ codex.md</text>
 <!-- edges: skills -->
-<path d="M274 300 C 420 300, 560 112, 686 112" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
-<path d="M274 310 C 440 310, 560 232, 686 232" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
-<path d="M274 320 C 440 320, 560 350, 686 350" fill="none" stroke="#5d6b67" stroke-width="1.4" marker-end="url(#a)"/>
-<text x="470" y="262" text-anchor="middle" font-size="11.5" fill="#5d6b67">~/.claude/skills symlink</text>
-<text x="470" y="292" text-anchor="middle" font-size="11.5" fill="#5d6b67">per-skill symlinks</text>
-<text x="470" y="348" text-anchor="middle" font-size="11.5" fill="#5d6b67">read natively</text>
+<path d="M274 300 C 500 300, 560 112, 686 112" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M274 310 C 500 310, 560 232, 686 232" fill="none" stroke="#5d6b67" stroke-width="1.4" stroke-dasharray="2 4" stroke-linecap="round" marker-end="url(#a)"/>
+<path d="M274 320 C 500 320, 560 350, 686 350" fill="none" stroke="#5d6b67" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="640" y="96" text-anchor="middle" font-size="11.5" fill="#5d6b67">~/.claude/skills symlink</text>
+<text x="470" y="302" text-anchor="middle" font-size="11.5" fill="#5d6b67">per-skill symlinks</text>
+<text x="470" y="366" text-anchor="middle" font-size="11.5" fill="#5d6b67">read natively</text>
 <!-- legend -->
 <g transform="translate(24 410)" font-size="11.5" fill="#5d6b67">
 <line x1="0" y1="0" x2="30" y2="0" stroke="#1d7a6c" stroke-width="1.6" stroke-dasharray="5 4"/><text x="38" y="4">live import</text>
