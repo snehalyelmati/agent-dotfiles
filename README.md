@@ -114,3 +114,7 @@ cd ~/Documents/agent-dotfiles && ./install.sh
 ```
 
 Then add the `PreToolUse` hook entry for `~/.claude/hooks/no-worktree.sh` to `~/.claude/settings.json`.
+
+## License
+
+MIT for everything original. Third-party skills under `agents/.agents/skills/` keep their upstream licenses, listed in `THIRD_PARTY.md`.
