@@ -25,6 +25,56 @@ codex/.codex/AGENTS.md   GENERATED: common + models + codex
 install.sh               render, stow, link skills
 ```
 
+## How it fits together
+
+```mermaid
+flowchart LR
+  subgraph SRC["~/.agents/instructions  (authored, the only place you edit)"]
+    C[common.md]
+    M[models.md]
+    CL[claude.md]
+    PI[pi.md]
+    CX[codex.md]
+  end
+  B[[build.sh]]
+  CC["~/.claude/CLAUDE.md<br/>3 @imports, live"]
+  PA["~/.pi/agent/AGENTS.md<br/>generated copy"]
+  XA["~/.codex/AGENTS.md<br/>generated copy"]
+  C -. import .-> CC
+  M -. import .-> CC
+  CL -. import .-> CC
+  C --> B
+  M --> B
+  PI --> B
+  CX --> B
+  B -- "+ pi.md" --> PA
+  B -- "+ codex.md" --> XA
+
+  subgraph SK["~/.agents/skills  (one copy of each skill)"]
+    S[(38 skills)]
+  end
+  S -. "dir symlink" .-> CS["~/.claude/skills"]
+  S -. "per-skill symlinks" .-> PS["~/.pi/agent/skills/*"]
+  S -- "read natively" --> XS["codex"]
+```
+
+```mermaid
+flowchart LR
+  subgraph L1["1 · global, per tool"]
+    a1["Claude: ~/.claude/CLAUDE.md"]
+    b1["pi: ~/.pi/agent/AGENTS.md"]
+    c1["codex: ~/.codex/AGENTS.md"]
+  end
+  subgraph L2["2 · project, shared"]
+    a2["AGENTS.md"]
+  end
+  subgraph L3["3 · project, private (optional)"]
+    a3["CLAUDE.local.md / AGENTS.override.md"]
+  end
+  L1 --> L2 --> L3
+  L3 -.-> N["later file wins on conflict"]
+```
+
 ## How each harness reads it
 
 | Layer | Claude Code | pi | codex |
