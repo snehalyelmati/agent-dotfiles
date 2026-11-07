@@ -1,7 +1,7 @@
 #!/bin/bash
 # Claude Code status line. Reads session JSON on stdin, prints two rows:
 #   valorune · feature/integrate-agents ●⇡ · #123 ✓
-#   Opus 5.5 high · ━━━─────── 31% · 5h 42% resets 2h10m
+#   Opus 5.5 high · ━━━─────── 31% · 5h 58% 2h10m · wk 82% 3d04h
 # Gray is the resting state; colour marks what needs attention.
 # Branch symbols: ✓ committed and pushed, ● uncommitted, ⇡ unpushed, ⇣ behind,
 # ⇕ diverged, ○ not published or detached.
@@ -13,8 +13,9 @@ SEP=" ${DIM}·${RESET} "
 
 # Fields are joined on the unit separator so empty values keep their position.
 IFS=$'\x1f' read -r cwd model effort ctx_pct limit_pct limit_reset \
-  pr_number pr_state worktree <<<"$(jq -r '
+  week_pct week_reset pr_number pr_state worktree <<<"$(jq -r '
   def pct: if . == null then "" else round end;
+  def left: if . == null then "" else (100 - .) | if . < 0 then 0 elif . > 100 then 100 else . end | round end;
   [
     (.workspace.current_dir // .cwd // ""),
     (.model.display_name // ""),
@@ -24,8 +25,10 @@ IFS=$'\x1f' read -r cwd model effort ctx_pct limit_pct limit_reset \
         else ((.input_tokens // 0) + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0))
              * 100 / 254000 | if . > 100 then 100 else . end
         end | pct),
-    (.rate_limits.five_hour.used_percentage | pct),
+    (.rate_limits.five_hour.used_percentage | left),
     (.rate_limits.five_hour.resets_at // ""),
+    (.rate_limits.seven_day.used_percentage | left),
+    (.rate_limits.seven_day.resets_at // ""),
     (.pr.number // ""),
     (.pr.review_state // ""),
     (.workspace.git_worktree // .worktree.name // "")
@@ -36,6 +39,7 @@ fmt_duration() {
   local s=$1
   if [ "$s" -lt 60 ]; then printf '<1m'
   elif [ "$s" -lt 3600 ]; then printf '%dm' $((s / 60))
+  elif [ "$s" -ge 86400 ]; then printf '%dd%02dh' $((s / 86400)) $((s % 86400 / 3600))
   else printf '%dh%02dm' $((s / 3600)) $((s % 3600 / 60))
   fi
 }
@@ -131,13 +135,22 @@ fi
 row2="${DIM}${model}${RESET}"
 [ -n "$effort" ] && row2+=" ${DIM}${effort}${RESET}"
 [ -n "$ctx_pct" ] && row2+=$(group "$(context_segment "$ctx_pct")")
+now=$(date +%s)
 if [ -n "$limit_pct" ]; then
   limit="${DIM}5h ${limit_pct}%${RESET}"
   if [ -n "$limit_reset" ]; then
-    remaining=$((limit_reset - $(date +%s)))
-    [ "$remaining" -gt 0 ] && limit+=" ${DIM}resets $(fmt_duration "$remaining")${RESET}"
+    remaining=$((limit_reset - now))
+    [ "$remaining" -gt 0 ] && limit+=" ${DIM}$(fmt_duration "$remaining")${RESET}"
   fi
   row2+=$(group "$limit")
+fi
+if [ -n "$week_pct" ]; then
+  week="${DIM}wk ${week_pct}%${RESET}"
+  if [ -n "$week_reset" ]; then
+    remaining=$((week_reset - now))
+    [ "$remaining" -gt 0 ] && week+=" ${DIM}$(fmt_duration "$remaining")${RESET}"
+  fi
+  row2+=$(group "$week")
 fi
 
 printf '%s\n%s\n' "$row1" "$row2"
