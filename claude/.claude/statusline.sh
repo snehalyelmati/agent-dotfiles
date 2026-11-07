@@ -23,7 +23,7 @@ IFS=$'\x1f' read -r cwd model effort ctx_pct limit_pct limit_reset \
     (.context_window.current_usage
       | if . == null then null
         else ((.input_tokens // 0) + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0))
-             * 100 / 254000 | if . > 100 then 100 else . end
+             * 100 / 400000
         end | pct),
     (.rate_limits.five_hour.used_percentage | left),
     (.rate_limits.five_hour.resets_at // ""),
@@ -44,7 +44,7 @@ fmt_duration() {
   fi
 }
 
-# Ten-cell line gauge in half-cell steps; values above 100 stay full.
+# Ten-cell line gauge in half-cell steps; the bar stops at full, the number does not.
 context_gauge() {
   local halves=$(($1 / 5)) lit="" track="" i
   [ "$halves" -gt 20 ] && halves=20
