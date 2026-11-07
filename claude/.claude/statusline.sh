@@ -19,7 +19,11 @@ IFS=$'\x1f' read -r cwd model effort ctx_pct limit_pct limit_reset \
     (.workspace.current_dir // .cwd // ""),
     (.model.display_name // ""),
     (.effort.level // ""),
-    (.context_window.used_percentage | pct),
+    (.context_window.current_usage
+      | if . == null then null
+        else ((.input_tokens // 0) + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0))
+             * 100 / 254000 | if . > 100 then 100 else . end
+        end | pct),
     (.rate_limits.five_hour.used_percentage | pct),
     (.rate_limits.five_hour.resets_at // ""),
     (.pr.number // ""),
