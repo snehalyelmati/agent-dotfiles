@@ -54,7 +54,8 @@
 ## Validation tiers
 
 - Iterate on the narrowest check that can fail for the change: the touched test file or name pattern, the single crate or package, and the scoped end-to-end journey that covers the behaviour.
-- Run the full suite, workspace-wide lint and the full end-to-end matrix once per slice, after the slice's review findings are fixed and before its commit, and again after any change to a shipped threshold or fixture. Do not relaunch a full matrix to confirm a single fix.
+- Per slice, after its review findings are fixed and before its commit: run the scoped tests and workspace-wide lint, and commit on that evidence.
+- Run the full test suite and the full end-to-end matrix once per piece of work, after its last behaviour-changing slice, and after any change to a shipped threshold or fixture. Run them earlier only when a slice changes something many tests depend on. Do not relaunch a full matrix to confirm a single fix, and do not run it for a wording-only slice.
 - State in the final report which tier ran and which did not.
 
 ## Design conversations
