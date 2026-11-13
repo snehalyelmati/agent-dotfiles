@@ -1,3 +1,5 @@
 # Claude Code cloud-synced skills land here through the skills symlink
 agents/.agents/skills/synced/
 .DS_Store
+# impeccable engine binary; the launcher downloads it to ~/.impeccable on first run
+agents/.agents/skills/impeccable/scripts/bin/
