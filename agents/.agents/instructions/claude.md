@@ -8,6 +8,7 @@
 ## Artifacts
 
 - Before writing any HTML artifact, load the `artifact-design` and `frontend-design` skills and follow them, even for reports and summaries.
+- Build a requested artifact as a plain page. Use the Whiteboard type or a design system only when the user asks for one; otherwise pass `design_systems: false` to quickstart.
 - Show the content visually first: use charts, diagrams and interactive elements wherever they explain something better than prose, and keep prose short.
 - Base the visual concept on the subject, and label anything schematic or derived so it can't be mistaken for measured data.
 - Render the page and check it at desktop and phone widths before publishing. If you can't, say so.
