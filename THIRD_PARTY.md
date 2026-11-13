@@ -1,6 +1,6 @@
 # Third-party skills
 
-Everything outside `agents/.agents/skills/` is original and MIT licensed (see LICENSE). The skills below were installed from other projects and keep their upstream licenses. Skills not listed here are original.
+Everything listed below comes from another project and keeps its upstream license. Everything else is original and MIT licensed (see LICENSE).
 
 | Skills | Source | License |
 |---|---|---|
